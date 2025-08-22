@@ -1,7 +1,6 @@
 # Prédiction du Churn des Clients Télécom
 
 
-
 ## Aperçu du projet
 Ce projet vise à prédire si un client d’une compagnie télécom va résilier son abonnement (churn) ou non, à partir de ses données d’utilisation : durée des appels, nombre de messages vocaux, appels internationaux, appels au service client, etc.
 
@@ -9,12 +8,14 @@ Ce projet vise à prédire si un client d’une compagnie télécom va résilier
 À partir du dataset bigml_59.csv, nous allons construire plusieurs modèles de classification (régression logistique, arbre de décision, random forest) afin de comparer leurs performances.  
 L’objectif final est de fournir aux décideurs des *recommandations concrètes pour réduire le churn*, améliorer la fidélisation et augmenter la rentabilité.
 
+
 ## Compréhension du problème
 
 ### Contexte métier
 Les entreprises de télécommunication font face à un défi majeur : *la perte de clients (churn)*.  
 Conserver un client existant coûte souvent beaucoup moins cher que d’en acquérir un nouveau.  
 Dans ce contexte, anticiper quels clients risquent de résilier leur contrat permet à l’entreprise de mettre en place des stratégies de *fidélisation ciblées* (offres promotionnelles, services personnalisés, meilleure assistance, etc.).
+
 
 ### Parties prenantes
 - *Direction Marketing* : souhaite comprendre les profils de clients à risque afin de mettre en place des campagnes ciblées.  
@@ -145,11 +146,9 @@ On commence par importer les librairies nécessaires pour l'analyse et la prépa
 python
 # Standardisation des colonnes numériques
 numeric_cols = X_train.select_dtypes(include=np.number).columns
-
 scaler = StandardScaler()
 X_train[numeric_cols] = scaler.fit_transform(X_train[numeric_cols])
 X_test[numeric_cols] = scaler.transform(X_test[numeric_cols])
-
 print("Données standardisées")
 
 
@@ -184,7 +183,9 @@ print("Train Accuracy:", accuracy_score(y_train, y_pred_train))
 print("Test Accuracy:", accuracy_score(y_test, y_pred_test))
 print("Classification report:\n", classification_report(y_test, y_pred_test))
 
+
 ### Matrice de confusion
+
 python
 cm = confusion_matrix(y_test, y_pred_test_rf)
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
@@ -192,6 +193,7 @@ plt.xlabel("Prédiction")
 plt.ylabel("Réel")
 plt.title("Matrice de confusion - Random Forest")
 plt.show()
+
 
 <img src="Images/image1.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
@@ -243,13 +245,16 @@ print("Classification report Logistic Regression:\n", classification_report(y_te
 print("Accuracy Decision Tree:", accuracy_score(y_test, y_pred_dt))
 print("Classification report Decision Tree:\n", classification_report(y_test, y_pred_dt))
 
+
 <img src="Images/image2.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
 
+
 <img src="Images/image3.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
+
 
 #### Importance des features
 python
@@ -281,6 +286,7 @@ plt.show()
 <img src="Images/image4.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
+
 
 python
 # ----------------------------
@@ -323,6 +329,7 @@ plt.show()
 <img src="Images/image5.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
+
 
 ## Modèle final et comparaison
 
