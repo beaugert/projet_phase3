@@ -322,7 +322,11 @@ plt.title('Courbes ROC Comparatives')
 plt.legend(loc='lower right')
 plt.grid(True)
 plt.show()
-```
+```<img src="Images/image5.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
+
 
 
 
