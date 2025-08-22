@@ -328,6 +328,28 @@ plt.show()
 </p>
 
 
+## Modèle final et comparaison
+
+### Modèle retenu
+- *Random Forest Classifier*  
+- Meilleure performance (accuracy et AUC élevées)  
+- Variables importantes : customer service calls, total day minutes, international plan  
+- Avantages : capture les relations non-linéaires, stable, identifie les features clés  
+
+### Comparaison des modèles
+
+| Modèle               | Accuracy | AUC  | Points forts                  |
+|----------------------|---------|------|-------------------------------|
+| Régression Logistique | à compléter | à compléter | Simple, interprétable        |
+| Arbre de Décision     | à compléter | à compléter | Capture non-linéarités       |
+| Random Forest (final) | à compléter | à compléter | Stable, performant, features importantes |
+
+### Conclusion
+Le modèle final permet de prédire efficacement le churn et d’orienter les actions de fidélisation.
+
+###Email:beaugert@yahoo.fr
+
+
 
 
 
