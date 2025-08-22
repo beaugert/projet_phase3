@@ -246,4 +246,13 @@ print("Classification report Logistic Regression:\n", classification_report(y_te
 print("Accuracy Decision Tree:", accuracy_score(y_test, y_pred_dt))
 print("Classification report Decision Tree:\n", classification_report(y_test, y_pred_dt))
 ```
+<img src="Images/image2.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
+
+<img src="Images/image3.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
 
