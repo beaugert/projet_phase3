@@ -147,3 +147,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, classification_report
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+### Standardisation
+
+```python
+# Standardisation des colonnes numériques
+numeric_cols = X_train.select_dtypes(include=np.number).columns
+scaler = StandardScaler()
+X_train[numeric_cols] = scaler.fit_transform(X_train[numeric_cols])
+X_test[numeric_cols] = scaler.transform(X_test[numeric_cols])
+print("Données standardisées")
+
