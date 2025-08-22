@@ -158,3 +158,35 @@ scaler = StandardScaler()
 X_train[numeric_cols] = scaler.fit_transform(X_train[numeric_cols])
 X_test[numeric_cols] = scaler.transform(X_test[numeric_cols])
 print("Données standardisées")
+```
+### Régression logistique
+
+```python
+# Sélection des features et de la cible
+X = df.drop(columns=["churn"], errors="ignore")  # supprime 'churn', ignore si absent
+y = df["churn"].astype(int)                       # encode True/False en 1/0
+
+# Encodage des colonnes catégorielles
+X = pd.get_dummies(X, drop_first=True)
+
+# Division train/test
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42, stratify=y
+)
+
+# Standardisation
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Entraînement Logistic Regression
+logreg = LogisticRegression(max_iter=1000, random_state=42)
+logreg.fit(X_train, y_train)
+
+# Prédictions et évaluation
+y_pred_train = logreg.predict(X_train)
+y_pred_test = logreg.predict(X_test)
+
+print("Train Accuracy:", accuracy_score(y_train, y_pred_train))
+print("Test Accuracy:", accuracy_score(y_test, y_pred_test))
+print("Classification report:\n", classification_report(y_test, y_pred_test))
