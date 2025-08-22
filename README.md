@@ -190,3 +190,15 @@ y_pred_test = logreg.predict(X_test)
 print("Train Accuracy:", accuracy_score(y_train, y_pred_train))
 print("Test Accuracy:", accuracy_score(y_test, y_pred_test))
 print("Classification report:\n", classification_report(y_test, y_pred_test))
+```
+
+### Matrice de confusion
+
+```python
+cm = confusion_matrix(y_test, y_pred_test_rf)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.xlabel("Prédiction")
+plt.ylabel("Réel")
+plt.title("Matrice de confusion - Random Forest")
+plt.show()
+```
