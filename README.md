@@ -255,4 +255,33 @@ print("Classification report Decision Tree:\n", classification_report(y_test, y_
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
 
+#### Importance des features
+
+```python
+# Supposons que X soit votre DataFrame initial (avant split)
+X_orig = X.copy()  # garder les noms de colonnes
+
+# Standardisation
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Recréer un DataFrame avec les colonnes
+X_train_df = pd.DataFrame(X_train_scaled, columns=X_orig.columns)
+X_test_df = pd.DataFrame(X_test_scaled, columns=X_orig.columns)
+
+# Calcul des importances avec Random Forest
+importances = pd.Series(rf.feature_importances_, index=X_train_df.columns).sort_values(ascending=False)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(10,6))
+sns.barplot(x=importances[:10], y=importances.index[:10])
+plt.title("Top 10 features importantes")
+plt.show()
+```
+
+
 
