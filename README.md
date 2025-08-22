@@ -150,11 +150,4 @@ import seaborn as sns
 
 ### Standardisation
 
-```python
-# Standardisation des colonnes numériques
-numeric_cols = X_train.select_dtypes(include=np.number).columns
-scaler = StandardScaler()
-X_train[numeric_cols] = scaler.fit_transform(X_train[numeric_cols])
-X_test[numeric_cols] = scaler.transform(X_test[numeric_cols])
-print("Données standardisées")
 
