@@ -286,6 +286,45 @@ plt.show()
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
 
+```python
+# ----------------------------
+# Imports nécessaires
+# ----------------------------
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, roc_auc_score
+
+# ----------------------------
+# Prédictions probabilistes
+# ----------------------------
+# Utiliser les arrays NumPy standardisés pour éviter les warnings
+y_prob_logreg = logreg.predict_proba(X_test_scaled)[:, 1]
+y_prob_rf = rf.predict_proba(X_test_scaled)[:, 1]
+
+# ----------------------------
+# Calcul des courbes ROC
+# ----------------------------
+fpr_logreg, tpr_logreg, _ = roc_curve(y_test, y_prob_logreg)
+fpr_rf, tpr_rf, _ = roc_curve(y_test, y_prob_rf)
+
+auc_logreg = roc_auc_score(y_test, y_prob_logreg)
+auc_rf = roc_auc_score(y_test, y_prob_rf)
+
+# ----------------------------
+# Affichage des courbes ROC
+# ----------------------------
+plt.figure(figsize=(8,6))
+plt.plot(fpr_logreg, tpr_logreg, label=f'Logistic Regression (AUC = {auc_logreg:.2f})')
+plt.plot(fpr_rf, tpr_rf, label=f'Random Forest (AUC = {auc_rf:.2f})')
+plt.plot([0,1], [0,1], 'k--', label='Chance')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Courbes ROC Comparatives')
+plt.legend(loc='lower right')
+plt.grid(True)
+plt.show()
+```
+
+
 
 
 
