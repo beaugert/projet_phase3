@@ -282,6 +282,10 @@ sns.barplot(x=importances[:10], y=importances.index[:10])
 plt.title("Top 10 features importantes")
 plt.show()
 ```
+<img src="Images/image4.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
 
 
 
