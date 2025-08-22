@@ -201,4 +201,7 @@ plt.xlabel("Prédiction")
 plt.ylabel("Réel")
 plt.title("Matrice de confusion - Random Forest")
 plt.show()
-```
+```<img src="Images/image1.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
