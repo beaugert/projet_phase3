@@ -205,4 +205,45 @@ plt.show()
 <img src="Images/image1.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
+### Standardisation et Modèles
+
+```python
+# Standardisation
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Modèle 1 : Régression Logistique
+logreg = LogisticRegression(max_iter=1000, random_state=42)
+logreg.fit(X_train_scaled, y_train)
+y_pred_logreg = logreg.predict(X_test_scaled)
+
+# Modèle 2 : Arbre de Décision
+dt = DecisionTreeClassifier(random_state=42)
+dt.fit(X_train_scaled, y_train)
+y_pred_dt = dt.predict(X_test_scaled)
+
+# Matrices de confusion
+from sklearn.metrics import ConfusionMatrixDisplay
+
+# Logistic Regression
+cm_logreg = confusion_matrix(y_test, y_pred_logreg)
+disp_logreg = ConfusionMatrixDisplay(cm_logreg, display_labels=[0,1])
+disp_logreg.plot(cmap=plt.cm.Blues)
+plt.title("Matrice de confusion - Régression Logistique")
+plt.show()
+
+# Decision Tree
+cm_dt = confusion_matrix(y_test, y_pred_dt)
+disp_dt = ConfusionMatrixDisplay(cm_dt, display_labels=[0,1])
+disp_dt.plot(cmap=plt.cm.Oranges)
+plt.title("Matrice de confusion - Arbre de Décision")
+plt.show()
+
+# Évaluation
+print("Accuracy Logistic Regression:", accuracy_score(y_test, y_pred_logreg))
+print("Classification report Logistic Regression:\n", classification_report(y_test, y_pred_logreg))
+print("Accuracy Decision Tree:", accuracy_score(y_test, y_pred_dt))
+print("Classification report Decision Tree:\n", classification_report(y_test, y_pred_dt))
+```
 
