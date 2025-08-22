@@ -135,3 +135,16 @@ Les étapes appliquées sur le dataset bigml_59.csv sont les suivantes :
 ### 6. Gestion du déséquilibre de classes
 - Vérification de la répartition entre clients churn et non churn.  
 - Éventuellement appliquer un rééquilibrage (technique *SMOTE* ou pondération des classes) pour améliorer la performance des modèles.
+
+- ```python
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
